@@ -91,6 +91,24 @@ Modify `dags/scraping_dag.py` to:
 - Adjust task parameters
 - Add new data sources
 
+## 🧪 Testing
+
+Run tests with the following commands:
+
+```bash
+# Install test dependencies
+pip install -r requirements-test.txt
+
+# Run all tests
+pytest
+
+# Run tests with coverage report
+pytest --cov=plugins --cov-report=term-missing
+
+# Run a specific test file
+pytest tests/test_data_processing.py -v
+```
+
 ## 🐛 Troubleshooting
 
 ### Common Issues
