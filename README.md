@@ -51,12 +51,13 @@ This project implements a containerized Airflow DAG that scrapes weather and cur
 
 2. **Start the services**
    ```bash
-   docker-compose up -d
+   docker compose up airflow-init
+   docker compose up
    ```
 
 3. **Access Airflow UI**
    - Open http://localhost:8080 in your browser
-   - Default credentials: `airflow` / `airflow`
+   - Default credentials: `admin` / `admin`
 
 4. **Trigger the DAG**
    - In the Airflow UI, find the `scraping_dag`
@@ -85,52 +86,14 @@ Edit the `.env` file to configure:
 - Airflow settings
 - Data sources and destinations
 
-### DAG Configuration
-Modify `dags/scraping_dag.py` to:
-- Change the schedule interval
-- Adjust task parameters
-- Add new data sources
-
 ## 🧪 Testing
 
 Run tests with the following commands:
 
 ```bash
-# Install test dependencies
 pip install -r requirements-test.txt
-
-# Run all tests
 pytest
-
-# Run tests with coverage report
-pytest --cov=plugins --cov-report=term-missing
-
-# Run a specific test file
-pytest tests/test_data_processing.py -v
 ```
-
-## 🐛 Troubleshooting
-
-### Common Issues
-
-1. **Port conflicts**
-   - Ensure ports 8080 (Airflow) and 5432 (PostgreSQL) are available
-
-2. **Container startup issues**
-   - Check logs: `docker-compose logs -f`
-   - Ensure Docker has enough resources (4GB+ RAM recommended)
-
-3. **DAG not appearing**
-   - Check the `dags` volume mount in `docker-compose.yml`
-   - Verify file permissions in the `dags` directory
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
 
 ## 📄 License
 
